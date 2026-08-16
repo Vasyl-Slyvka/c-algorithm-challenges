@@ -16,6 +16,9 @@ option(AC_ENABLE_SANITIZERS "Enable AddressSanitizer and UndefinedBehaviorSaniti
 
 function(ac_configure_target target)
     if(MSVC)
+        # Keep the portable ISO C stdio API while suppressing Microsoft's
+        # non-standard secure-CRT deprecation warning (C4996).
+        target_compile_definitions(${target} PRIVATE _CRT_SECURE_NO_WARNINGS)
         target_compile_options(${target} PRIVATE /W4)
         if(AC_WARNINGS_AS_ERRORS)
             target_compile_options(${target} PRIVATE /WX)
