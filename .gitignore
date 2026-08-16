@@ -1,0 +1,8 @@
+/build/
+/build-sanitize/
+*.o
+*.obj
+*.exe
+*.log
+.vs/
+.vscode/
